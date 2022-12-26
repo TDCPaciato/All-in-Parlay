@@ -12,7 +12,7 @@
         android:textSize="38sp"
         android:textStyle="bold"
         android:fontFamily="sans-serif-smallcaps"
-        android:textColor="#D32F2F"
+        android:textColor="#F1F1F1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

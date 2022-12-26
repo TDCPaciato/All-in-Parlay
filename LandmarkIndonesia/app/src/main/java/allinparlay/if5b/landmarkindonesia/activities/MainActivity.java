@@ -1,8 +1,10 @@
-package allinparlay.if5b.landmarkindonesia;
+package allinparlay.if5b.landmarkindonesia.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import allinparlay.if5b.landmarkindonesia.R;
 
 public class MainActivity extends AppCompatActivity {
 
