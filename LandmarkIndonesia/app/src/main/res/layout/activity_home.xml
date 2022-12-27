@@ -6,90 +6,114 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".activities.HomeActivity">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="none">
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/nav_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <RelativeLayout
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp">
+
+            <TextView
+                android:id="@+id/tv_hot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="25dp"
+                android:text="Untuk Anda"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_sumatra"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/tv_hot"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="30dp"
+                android:paddingTop="10dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_jawa"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/tv_hot"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_toEndOf="@+id/btn_sumatra"
+                android:paddingTop="10dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_Kalimantan"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/tv_hot"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_toEndOf="@+id/btn_jawa"
+                android:paddingTop="10dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_sulawesi"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/tv_hot"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_toEndOf="@+id/btn_Kalimantan"
+                android:paddingTop="10dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_papua"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/tv_hot"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_toEndOf="@+id/btn_sulawesi"
+                android:paddingTop="10dp" />
+
+            <TextView
+                android:id="@+id/tv_laptop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_sumatra"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="30dp"
+                android:text="Sumatera"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+
+        </RelativeLayout>
+
+        </ScrollView>
+
+    </FrameLayout>
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginHorizontal="16dp">
-
-        <TextView
-            android:id="@+id/tv_hot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="25dp"
-            android:text="Untuk Anda"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_sumatra"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_below="@id/tv_hot"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="30dp"
-            android:paddingTop="10dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_jawa"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_below="@id/tv_hot"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="30dp"
-            android:layout_toEndOf="@+id/btn_sumatra"
-            android:paddingTop="10dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_Kalimantan"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_below="@id/tv_hot"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="30dp"
-            android:layout_toEndOf="@+id/btn_jawa"
-            android:paddingTop="10dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_sulawesi"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_below="@id/tv_hot"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="30dp"
-            android:layout_toEndOf="@+id/btn_Kalimantan"
-            android:paddingTop="10dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_papua"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_below="@id/tv_hot"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="30dp"
-            android:layout_toEndOf="@+id/btn_sulawesi"
-            android:paddingTop="10dp" />
-
-        <TextView
-            android:id="@+id/tv_laptop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btn_sumatra"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="30dp"
-            android:text="Sumatera"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/nav_menu"
+        />
 
 
-    </RelativeLayout>
-
-
-</ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
