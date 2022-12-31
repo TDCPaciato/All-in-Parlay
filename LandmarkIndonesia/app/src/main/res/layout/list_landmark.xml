@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:strokeColor="@color/black"
+    app:strokeWidth="2dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="8dp"
+    android:layout_margin="25dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/iv_landmark_photo"
+            android:layout_centerHorizontal="true"
+            android:layout_width="110dp"
+            android:layout_height="120dp"
+            tools:text="PHOTO LANDMARK"/>
+
+        <TextView
+            android:id="@+id/tv_nama_landmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_landmark_photo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="16dp"
+            android:textSize="20sp"
+            tools:text="NAMA LANDMARK"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
