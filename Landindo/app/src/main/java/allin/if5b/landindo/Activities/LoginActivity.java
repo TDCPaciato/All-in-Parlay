@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -16,12 +17,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import allin.if5b.landindo.Service.Utilities;
 import allin.if5b.landindo.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
+    public static final String TAG = "AllInParlay";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,8 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onSuccess(AuthResult authResult) {
                                    progressDialog.cancel();
                                     Toast.makeText(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
+                                    String email = firebaseAuth.getCurrentUser().getEmail();
+                                    Utilities.setValue(LoginActivity.this, "xEmail", email);
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 }
                             })
