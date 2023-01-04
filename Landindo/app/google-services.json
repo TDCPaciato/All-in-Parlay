@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "29584944479",
+    "project_id": "landindo-e06c8",
+    "storage_bucket": "landindo-e06c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29584944479:android:e2e18e52e95d4588eddaea",
+        "android_client_info": {
+          "package_name": "allin.if5b.landindo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "29584944479-vu9lvjuinp8k275uu6aua1den9vk111q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi3aQf56N7y9zL9mF1f-ZHgb1fcvUVc-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "29584944479-vu9lvjuinp8k275uu6aua1den9vk111q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

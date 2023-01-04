@@ -1,20 +1,35 @@
 package allin.if5b.landindo.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import allin.if5b.landindo.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
+    FirebaseAuth firebaseAuth;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        firebaseAuth = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
 
         binding.btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,21 +42,36 @@ public class LoginActivity extends AppCompatActivity {
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = binding.etUsername.getText().toString();
+                String email = binding.etEmail.getText().toString();
                 String password = binding.etPassword.getText().toString();
 
                 boolean bolehLogin = true;
 
-                if (TextUtils.isEmpty(username)){
+                if (TextUtils.isEmpty(email)){
                     bolehLogin = false;
-                    binding.etUsername.setError("Username Tidak Boleh Kosong !!");
+                    binding.etEmail.setError("Email Tidak Boleh Kosong !!");
                 }
                 if (TextUtils.isEmpty(password)){
                     bolehLogin = false;
                     binding.etPassword.setError("Password Tidak Boleh Kosong !!");
                 }
-                if (bolehLogin){
-                    login(username, password);
+                else {
+                    firebaseAuth.signInWithEmailAndPassword(email, password)
+                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                                @Override
+                                public void onSuccess(AuthResult authResult) {
+                                   progressDialog.cancel();
+                                    Toast.makeText(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    progressDialog.cancel();
+                                    Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
                 }
 
             }
