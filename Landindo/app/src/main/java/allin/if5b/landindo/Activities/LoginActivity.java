@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import allin.if5b.landindo.Service.Utilities;
 import allin.if5b.landindo.databinding.ActivityLoginBinding;
@@ -64,7 +65,8 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
                                    progressDialog.cancel();
-                                    Toast.makeText(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
+                                    FancyToast.makeText(LoginActivity.this,"Login berhasil",FancyToast.LENGTH_LONG,FancyToast.SUCCESS,true).show();
                                     String email = firebaseAuth.getCurrentUser().getEmail();
                                     Utilities.setValue(LoginActivity.this, "xEmail", email);
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
@@ -74,7 +76,8 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     progressDialog.cancel();
-                                    Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    FancyToast.makeText(LoginActivity.this,"Login gagal",FancyToast.LENGTH_LONG,FancyToast.ERROR,true).show();
                                 }
                             });
                 }
