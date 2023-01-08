@@ -15,4 +15,5 @@ public class DeskripsiActivity extends AppCompatActivity {
         binding = ActivityDeskripsiBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
     }
+
 }

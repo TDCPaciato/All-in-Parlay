@@ -191,7 +191,17 @@
                 tools:orientation="horizontal" />
         </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_info_24"
+            android:background="@color/black"
+            />
+
     </LinearLayout>
+
 
 
 </ScrollView>

@@ -24,6 +24,13 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
+        binding.btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AboutActivity.class));
+            }
+        });
+
         binding.civSumatra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

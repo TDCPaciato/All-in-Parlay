@@ -6,28 +6,30 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import allin.if5b.landindo.R;
+import allin.if5b.landindo.databinding.ActivityAboutBinding;
 
-public class AboutUsActivity extends AppCompatActivity {
+public class AboutActivity extends AppCompatActivity {
 
-    TextView tv_rizky, tv_stephen, tv_lipi;
+    private ActivityAboutBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about_us);
+        binding = ActivityAboutBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-
-        tv_rizky = findViewById(R.id.tv_rizky);
-        tv_stephen = findViewById(R.id.tv_stephen);
-        tv_lipi = findViewById(R.id.tv_lipi);
-
-        tv_rizky.setOnClickListener(new View.OnClickListener() {
+        binding.backToHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
+        binding.tvRizky.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 Intent send = new Intent(Intent.ACTION_SENDTO);
                 send.putExtra(Intent.EXTRA_EMAIL, "rizky.kurniawan@mhs.mdp.ac.id");
                 send.setData(Uri.parse("mailto:"));
@@ -37,11 +39,9 @@ public class AboutUsActivity extends AppCompatActivity {
             }
         });
 
-        tv_stephen.setOnClickListener(new View.OnClickListener() {
+        binding.tvStephen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 Intent send = new Intent(Intent.ACTION_SENDTO);
                 send.putExtra(Intent.EXTRA_EMAIL, "stephens12@mhs.mdp.ac.id");
                 send.setData(Uri.parse("mailto:"));
@@ -51,10 +51,9 @@ public class AboutUsActivity extends AppCompatActivity {
             }
         });
 
-        tv_lipi.setOnClickListener(new View.OnClickListener() {
+        binding.tvLipi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent send = new Intent(Intent.ACTION_SENDTO);
                 send.putExtra(Intent.EXTRA_EMAIL, "lipiamanda23@mhs.mdp.ac.id");
                 send.setData(Uri.parse("mailto:"));
@@ -63,6 +62,5 @@ public class AboutUsActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 }

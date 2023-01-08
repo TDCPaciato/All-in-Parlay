@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,13 @@ public class PulauActivity extends AppCompatActivity {
 
         String namaPulau = getIntent().getExtras().getString("Nama Pulau");
         getDestiansi();
+
+        binding.backToHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     private void getDestiansi() {
