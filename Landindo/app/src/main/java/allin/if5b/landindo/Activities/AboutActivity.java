@@ -35,7 +35,6 @@ public class AboutActivity extends AppCompatActivity {
                 send.setData(Uri.parse("mailto:"));
                 send.setPackage("com.google.android.gm");
                 startActivity(send);
-                finish();
             }
         });
 
@@ -47,7 +46,6 @@ public class AboutActivity extends AppCompatActivity {
                 send.setData(Uri.parse("mailto:"));
                 send.setPackage("com.google.android.gm");
                 startActivity(send);
-                finish();
             }
         });
 
@@ -59,7 +57,6 @@ public class AboutActivity extends AppCompatActivity {
                 send.setData(Uri.parse("mailto:"));
                 send.setPackage("com.google.android.gm");
                 startActivity(send);
-                finish();
             }
         });
     }
