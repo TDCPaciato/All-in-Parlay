@@ -201,6 +201,12 @@ public class MainActivity extends AppCompatActivity {
         binding.rvPostPapua.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         binding.rvPostPapua.setAdapter(adapterPost);
         adapterPost.setResultData(papua);
+        adapterPost.setOnClickListener(new AdapterPost.OnClickListener() {
+            @Override
+            public void onDetail(Destinasi result) {
+                goDetail(result);
+            }
+        });
     }
 
     private void loadAdapterSulawesi(List<Destinasi> sulawesi) {
@@ -208,6 +214,12 @@ public class MainActivity extends AppCompatActivity {
         binding.rvPostSulawesi.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         binding.rvPostSulawesi.setAdapter(adapterPost);
         adapterPost.setResultData(sulawesi);
+        adapterPost.setOnClickListener(new AdapterPost.OnClickListener() {
+            @Override
+            public void onDetail(Destinasi result) {
+                goDetail(result);
+            }
+        });
     }
 
     private void loadAdapterKalimantan(List<Destinasi> kalimantan) {
@@ -215,6 +227,12 @@ public class MainActivity extends AppCompatActivity {
         binding.rvPostKalimantan.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         binding.rvPostKalimantan.setAdapter(adapterPost);
         adapterPost.setResultData(kalimantan);
+        adapterPost.setOnClickListener(new AdapterPost.OnClickListener() {
+            @Override
+            public void onDetail(Destinasi result) {
+                goDetail(result);
+            }
+        });
     }
 
     private void loadAdapterJawa(List<Destinasi> jawa) {
@@ -222,6 +240,12 @@ public class MainActivity extends AppCompatActivity {
         binding.rvPostJawa.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         binding.rvPostJawa.setAdapter(adapterPost);
         adapterPost.setResultData(jawa);
+        adapterPost.setOnClickListener(new AdapterPost.OnClickListener() {
+            @Override
+            public void onDetail(Destinasi result) {
+                goDetail(result);
+            }
+        });
     }
 
     private void loadAdapterSumatera(List<Destinasi> sumatera) {
@@ -229,6 +253,22 @@ public class MainActivity extends AppCompatActivity {
         binding.rvPostSumatera.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         binding.rvPostSumatera.setAdapter(adapterPost);
         adapterPost.setResultData(sumatera);
+        adapterPost.setOnClickListener(new AdapterPost.OnClickListener() {
+            @Override
+            public void onDetail(Destinasi result) {
+                goDetail(result);
+            }
+        });
+    }
+
+    private void goDetail(Destinasi destinasi) {
+        Intent intent = new Intent(MainActivity.this, DeskripsiActivity.class);
+        intent.putExtra("nama", destinasi.getNama());
+        intent.putExtra("kota", destinasi.getKota());
+        intent.putExtra("provinsi", destinasi.getProvinsi());
+        intent.putExtra("gambar", destinasi.getGambar());
+        intent.putExtra("deskripsi", destinasi.getDeskripsi());
+        intent.putExtra("pulau", destinasi.getPulau());
     }
 
 

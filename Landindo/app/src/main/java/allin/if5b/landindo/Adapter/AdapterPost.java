@@ -24,10 +24,11 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.MyViewHolder> 
     private View.OnClickListener listener;
     private Context context;
 
+    private OnClickListener listenerr;
+
     public AdapterPost(Context context){
         this.context = context;
     }
-
 
     @NonNull
     @Override
@@ -44,6 +45,14 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.MyViewHolder> 
                 .placeholder(R.drawable.ic_launcher_background)
                 .fitCenter()
                 .into(holder.ivDestinasi);
+        holder.cvPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listenerr != null) {
+                    listenerr.onDetail(result);
+                }
+            }
+        });
     }
 
     @Override
@@ -68,5 +77,13 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.MyViewHolder> 
         resultData.clear();
         resultData.addAll(destinasi);
         notifyDataSetChanged();
+    }
+
+    public interface OnClickListener {
+        void onDetail (Destinasi result);
+    }
+
+    public void setOnClickListener (OnClickListener listener) {
+        this.listenerr = listener;
     }
 }
