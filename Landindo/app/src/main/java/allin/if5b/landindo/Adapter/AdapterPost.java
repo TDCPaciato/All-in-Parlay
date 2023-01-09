@@ -39,7 +39,7 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.MyViewHolder> 
     public void onBindViewHolder(@NonNull AdapterPost.MyViewHolder holder, int position) {
         Destinasi result =resultData.get(position);
         holder.tvNama.setText(result.getNama());
-        Glide.with(holder.itemView.getContext())
+        Glide.with(context)
                 .load(result.getGambar())
                 .placeholder(R.drawable.ic_launcher_background)
                 .fitCenter()

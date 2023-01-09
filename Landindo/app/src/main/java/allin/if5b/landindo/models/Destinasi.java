@@ -2,7 +2,7 @@ package allin.if5b.landindo.models;
 
 public class Destinasi {
     Integer id;
-    String nama, kota, provinsi, gambar, deskripsi;
+    String nama, kota, provinsi, gambar, deskripsi, pulau;
 
     public Integer getId() {
         return id;
@@ -26,5 +26,9 @@ public class Destinasi {
 
     public String getDeskripsi() {
         return deskripsi;
+    }
+
+    public String getPulau() {
+        return pulau;
     }
 }

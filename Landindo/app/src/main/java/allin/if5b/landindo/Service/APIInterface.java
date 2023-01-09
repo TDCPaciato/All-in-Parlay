@@ -11,8 +11,11 @@ import retrofit2.http.Query;
 
 public interface APIInterface {
 
-    //End Point Laptop
+
     @GET("destinasi")
     Call<ArrayList<Destinasi>> getDestinasi();
+
+    @GET("destinasi")
+    Call<ArrayList<Destinasi>> getPulau(@Query("pulau") String pulau);
 
 }

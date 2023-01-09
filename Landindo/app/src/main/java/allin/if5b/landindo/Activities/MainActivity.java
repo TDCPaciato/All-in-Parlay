@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +26,12 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private static final String TAG = "destiasi";
     private AdapterPost adapterPost;
-    private List<Destinasi> destinasiResult = new ArrayList<>();
+    private List<Destinasi> sumatera = new ArrayList<>();
+    private List<Destinasi> jawa = new ArrayList<>();
+    private List<Destinasi> kalimantan = new ArrayList<>();
+    private List<Destinasi> sulawesi = new ArrayList<>();
+    private List<Destinasi> papua = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +39,13 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        getData();
+
+
+        getSumatera();
+        getjawa();
+        getKalimantan();
+        getSulawesi();
+        getPapua();
 
         if(!Utilities.cekValue(MainActivity.this, "xEmail")){
             startActivity(new Intent(this, LoginActivity.class));
@@ -98,37 +111,131 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void getData(){
-        APIService.endpoint().getDestinasi()
-                .enqueue(new Callback<ArrayList<Destinasi>>() {
-                    @Override
-                    public void onResponse(Call<ArrayList<Destinasi>> call, Response<ArrayList<Destinasi>> response) {
-                        String nama = response.body().get(0).getNama();
-                        Log.d(TAG, "Nama Destinasi" + nama);
-                        LoadAdapter(response.body());
+    private void getSumatera(){
+        APIService.endpoint().getPulau("sumatera").enqueue(new Callback<ArrayList<Destinasi>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Destinasi>> call, Response<ArrayList<Destinasi>> response) {
+                if (response.code() == 200) {
+                    sumatera = response.body();
+                    loadAdapterSumatera(sumatera);
+                }
+            }
 
-                        
-                    }
+            @Override
+            public void onFailure(Call<ArrayList<Destinasi>> call, Throwable t) {
 
-                    @Override
-                    public void onFailure(Call<ArrayList<Destinasi>> call, Throwable t) {
-
-                    }
-                });
+            }
+        });
     }
 
-    private void LoadAdapter(List<Destinasi> destinasiResult){
+    private void getjawa(){
+        APIService.endpoint().getPulau("Jawa").enqueue(new Callback<ArrayList<Destinasi>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Destinasi>> call, Response<ArrayList<Destinasi>> response) {
+                if (response.code() == 200) {
+                    jawa = response.body();
+                    loadAdapterJawa(jawa);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Destinasi>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void getKalimantan(){
+        APIService.endpoint().getPulau("kalimantan").enqueue(new Callback<ArrayList<Destinasi>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Destinasi>> call, Response<ArrayList<Destinasi>> response) {
+                if (response.code() == 200) {
+                    kalimantan = response.body();
+                    loadAdapterKalimantan(kalimantan);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Destinasi>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void getSulawesi(){
+        APIService.endpoint().getPulau("sulawesi").enqueue(new Callback<ArrayList<Destinasi>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Destinasi>> call, Response<ArrayList<Destinasi>> response) {
+                if (response.code() == 200) {
+                    sulawesi = response.body();
+                    loadAdapterSulawesi(sulawesi);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Destinasi>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void getPapua(){
+        APIService.endpoint().getPulau("papua").enqueue(new Callback<ArrayList<Destinasi>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Destinasi>> call, Response<ArrayList<Destinasi>> response) {
+                if (response.code() == 200) {
+                    papua = response.body();
+                    loadAdapterPapua(papua);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Destinasi>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void loadAdapterPapua(List<Destinasi> papua) {
+        adapterPost = new AdapterPost(MainActivity.this);
+        binding.rvPostPapua.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        binding.rvPostPapua.setAdapter(adapterPost);
+        adapterPost.setResultData(papua);
+    }
+
+    private void loadAdapterSulawesi(List<Destinasi> sulawesi) {
+        adapterPost = new AdapterPost(MainActivity.this);
+        binding.rvPostSulawesi.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        binding.rvPostSulawesi.setAdapter(adapterPost);
+        adapterPost.setResultData(sulawesi);
+    }
+
+    private void loadAdapterKalimantan(List<Destinasi> kalimantan) {
+        adapterPost = new AdapterPost(MainActivity.this);
+        binding.rvPostKalimantan.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        binding.rvPostKalimantan.setAdapter(adapterPost);
+        adapterPost.setResultData(kalimantan);
+    }
+
+    private void loadAdapterJawa(List<Destinasi> jawa) {
+        adapterPost = new AdapterPost(MainActivity.this);
+        binding.rvPostJawa.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        binding.rvPostJawa.setAdapter(adapterPost);
+        adapterPost.setResultData(jawa);
+    }
+
+    private void loadAdapterSumatera(List<Destinasi> sumatera) {
         adapterPost = new AdapterPost(MainActivity.this);
         binding.rvPostSumatera.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        binding.rvPostJawa.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        binding.rvPostKalimantan.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        binding.rvPostSulawesi.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        binding.rvPostPapua.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        adapterPost.setResultData(destinasiResult);
         binding.rvPostSumatera.setAdapter(adapterPost);
-        binding.rvPostJawa.setAdapter(adapterPost);
-        binding.rvPostKalimantan.setAdapter(adapterPost);
-        binding.rvPostSulawesi.setAdapter(adapterPost);
-        binding.rvPostPapua.setAdapter(adapterPost);
+        adapterPost.setResultData(sumatera);
     }
+
+
+//        List<Data> list = new ArrayList<>();
+//        for (Data data: listAPI){
+//            if(data.getPulau().equals("sumatera")){
+//                list.add(data);
+//            }
+//        }
 }
