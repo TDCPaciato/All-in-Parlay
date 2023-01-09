@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +39,11 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.MyViewHolder> 
     public void onBindViewHolder(@NonNull AdapterPost.MyViewHolder holder, int position) {
         Destinasi result =resultData.get(position);
         holder.tvNama.setText(result.getNama());
+        Glide.with(holder.itemView.getContext())
+                .load(result.getGambar())
+                .placeholder(R.drawable.ic_launcher_background)
+                .fitCenter()
+                .into(holder.ivDestinasi);
     }
 
     @Override

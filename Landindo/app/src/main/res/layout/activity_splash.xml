@@ -13,6 +13,7 @@
         android:layout_marginVertical="36dp"
         android:fontFamily="sans-serif-condensed-light"
         android:text="Land"
+        app:layout_constraintEnd_toEndOf="parent"
         android:textColor="@color/tulisan_land"
         android:textSize="38sp"
         android:textStyle="bold"

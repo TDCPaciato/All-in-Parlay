@@ -119,8 +119,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void LoadAdapter(List<Destinasi> destinasiResult){
         adapterPost = new AdapterPost(MainActivity.this);
-        binding.rvPost.setLayoutManager(new LinearLayoutManager(this));
+        binding.rvPostSumatera.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        binding.rvPostJawa.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        binding.rvPostKalimantan.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        binding.rvPostSulawesi.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        binding.rvPostPapua.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         adapterPost.setResultData(destinasiResult);
-        binding.rvPost.setAdapter(adapterPost);
+        binding.rvPostSumatera.setAdapter(adapterPost);
+        binding.rvPostJawa.setAdapter(adapterPost);
+        binding.rvPostKalimantan.setAdapter(adapterPost);
+        binding.rvPostSulawesi.setAdapter(adapterPost);
+        binding.rvPostPapua.setAdapter(adapterPost);
     }
 }
