@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(Call<ArrayList<Destinasi>> call, Response<ArrayList<Destinasi>> response) {
                         String nama = response.body().get(0).getNama();
                         Log.d(TAG, "Nama Destinasi" + nama);
-                        LoadAdapter(destinasiResult);
+                        LoadAdapter(response.body());
 
                         
                     }
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
     private void LoadAdapter(List<Destinasi> destinasiResult){
         adapterPost = new AdapterPost(MainActivity.this);
         binding.rvPost.setLayoutManager(new LinearLayoutManager(this));
-        binding.rvPost.setAdapter(adapterPost);
         adapterPost.setResultData(destinasiResult);
+        binding.rvPost.setAdapter(adapterPost);
     }
 }
