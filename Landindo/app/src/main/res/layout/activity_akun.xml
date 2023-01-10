@@ -47,6 +47,7 @@
         android:layout_marginTop="32dp">
 
         <LinearLayout
+            android:id="@+id/ll_akun"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -144,7 +145,16 @@
 
             </LinearLayout>
         </LinearLayout>
-
     </RelativeLayout>
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/rl_akun"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:text="logout"
+        android:backgroundTint="@color/teal_700"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
