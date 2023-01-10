@@ -22,6 +22,7 @@ public class PulauActivity extends AppCompatActivity {
     private ActivityPulauBinding binding;
     private AdapterPost adapterPost;
     public static final String TAG = "AllInParlay";
+    String namaPulau;
     private List<Destinasi> destinasiResult = new ArrayList<>();
 
 
@@ -31,7 +32,8 @@ public class PulauActivity extends AppCompatActivity {
         binding = ActivityPulauBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        String namaPulau = getIntent().getExtras().getString("Nama Pulau");
+        namaPulau = getIntent().getExtras().getString("Nama Pulau");
+        binding.title.setText(namaPulau);
         getDestiansi();
 
         binding.backToHome.setOnClickListener(new View.OnClickListener() {
@@ -43,12 +45,15 @@ public class PulauActivity extends AppCompatActivity {
     }
 
     private void getDestiansi() {
-        APIService.endpoint().getDestinasi().enqueue(new Callback<ArrayList<Destinasi>>() {
+        binding.progressBar.setVisibility(View.VISIBLE);
+        APIService.endpoint().getPulau(namaPulau).enqueue(new Callback<ArrayList<Destinasi>>() {
             @Override
             public void onResponse(Call<ArrayList<Destinasi>> call, Response<ArrayList<Destinasi>> response) {
-                String nama = response.body().get(0).getNama();
-                Log.d(TAG, "Nama Destinasi : " + nama);
-                LoadAdapter(destinasiResult);
+                if (response.code() == 200) {
+                    destinasiResult = response.body();
+                    LoadAdapter(destinasiResult);
+                    binding.progressBar.setVisibility(View.GONE);
+                }
             }
 
             @Override

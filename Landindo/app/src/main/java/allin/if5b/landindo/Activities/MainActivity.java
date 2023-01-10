@@ -8,12 +8,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
+
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import allin.if5b.landindo.Adapter.AdapterPost;
+import allin.if5b.landindo.R;
 import allin.if5b.landindo.Service.APIService;
 import allin.if5b.landindo.Service.Utilities;
 import allin.if5b.landindo.databinding.ActivityMainBinding;
@@ -23,6 +28,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+    private List<SlideModel> imageslide = new ArrayList<>();
     private ActivityMainBinding binding;
     private static final String TAG = "destiasi";
     private AdapterPost adapterPost;
@@ -39,7 +45,14 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        imageslide.add(new SlideModel(R.drawable.jam_gadang,  ScaleTypes.CENTER_CROP));
+        imageslide.add(new SlideModel(R.drawable.jembatan_amanat_penderitaan_rakyat,  ScaleTypes.CENTER_CROP));
+        imageslide.add(new SlideModel(R.drawable.monumen_nasional,  ScaleTypes.CENTER_CROP));
+        imageslide.add(new SlideModel(R.drawable.menara_siger,  ScaleTypes.CENTER_CROP));
+        imageslide.add(new SlideModel(R.drawable.monumen_kapsul_waktu,  ScaleTypes.CENTER_CROP));
+        imageslide.add(new SlideModel(R.drawable.candi_borobudur,  ScaleTypes.CENTER_CROP));
 
+        binding.carousel.setImageList(imageslide);
 
         getSumatera();
         getjawa();
@@ -56,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, AboutActivity.class));
+            }
+        });
+
+        binding.btnAkun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AkunActivity.class));
             }
         });
 

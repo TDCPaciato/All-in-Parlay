@@ -1,6 +1,7 @@
 package allin.if5b.landindo.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
+import allin.if5b.landindo.Activities.DeskripsiActivity;
 import allin.if5b.landindo.R;
 import allin.if5b.landindo.models.Destinasi;
 
@@ -48,9 +50,10 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.MyViewHolder> 
         holder.cvPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (listenerr != null) {
-                    listenerr.onDetail(result);
-                }
+                Intent intent = new Intent(context, DeskripsiActivity.class);
+                intent.putExtra("destinasi", result);
+
+                context.startActivity(intent);
             }
         });
     }
